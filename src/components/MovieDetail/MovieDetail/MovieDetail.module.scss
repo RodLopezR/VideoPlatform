@@ -1,0 +1,51 @@
+@import '../../../scss/index.scss';
+
+.container {
+  color: white;
+  padding-bottom: 20px;
+
+  .img {
+    width: 90%;
+    margin-top: 20px;
+    margin-left: 5%;
+
+    @include small {
+      width: 100%;
+      margin-top: 0px;
+      margin-left: 0%;
+    }
+  }
+
+  .modifiedData {
+    padding: 10px;
+    margin-bottom: 0px;
+    padding-bottom: 0px;
+    text-align: justify !important;
+  }
+
+  .title2 {
+    font-size: 25px;
+    margin-bottom: 10px;
+  }
+
+  .desc {
+    padding: 10px;
+    margin-bottom: 20px;
+  }
+
+  .genres {
+    padding: 10px;
+    padding-top: 0px;
+    margin-bottom: 10px;
+  }
+
+  .companies {
+    padding: 10px;
+    padding-top: 0px;
+    margin-bottom: 60px;
+
+    img {
+      width: 100px;
+    }
+  }
+}
