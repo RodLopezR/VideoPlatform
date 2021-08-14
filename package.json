@@ -6,6 +6,7 @@
     "start": "REACT_APP_BASE_URL='/' react-scripts start",
     "build": "BUILD_PATH='./docs' REACT_APP_BASE_URL='VideoPlatform/' react-scripts build",
     "test": "react-scripts test --ci --coverage --watchAll=false",
+    "test:watch": "react-scripts test --coverage --watchAll",
     "prettier": "./node_modules/.bin/prettier --write ."
   },
   "dependencies": {
@@ -49,6 +50,23 @@
       "react-app",
       "react-app/jest"
     ]
+  },
+  "jest": {
+    "collectCoverageFrom": [
+      "!<rootDir>/src/index.tsx",
+      "!<rootDir>/src/reportWebVitals.ts",
+      "!<rootDir>/src/react-app-env.d.ts",
+      "!<rootDir>/src/types/**",
+      "!<rootDir>/src/**/*.snap"
+    ],
+    "coverageThreshold": {
+      "global": {
+        "branches": 70,
+        "functions": 70,
+        "lines": 70,
+        "statements": -10
+      }
+    }
   },
   "browserslist": {
     "production": [

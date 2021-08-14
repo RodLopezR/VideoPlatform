@@ -14,7 +14,7 @@ const SearchForm: FunctionComponent<PropsSearchForm> = ({
   lastValue,
 }) => {
   const [value, setValue] = useState('');
-
+  console.log(value);
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     setValue(e.target.value);
   };

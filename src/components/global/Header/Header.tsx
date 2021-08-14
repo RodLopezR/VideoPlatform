@@ -1,6 +1,4 @@
-import React from 'react';
 import SearchForm from '../../Home/SearchForm';
-import AppRoutes from '../../../constants/AppRoutes';
 import Styles from './Header.module.scss';
 
 interface PropsSearchForm {
