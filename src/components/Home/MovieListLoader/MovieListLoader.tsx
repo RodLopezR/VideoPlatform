@@ -1,9 +1,11 @@
 import { FunctionComponent, useEffect, useState } from 'react';
+import State from '../../../types/StateType';
+import MovielistPaginator from '../MovieListPaginator';
+import LoadingComponent from '../../global/LoadingComponent';
+import WelcomeComponent from '../../global/WelcomeComponent';
+
 import { Container } from '@material-ui/core';
 import { SearchMovieService } from '../../../services/MovieService';
-
-import State from '../../../types/StateType';
-import MovieListPaginator from '../MovieListPaginator';
 
 interface PropsMovieListLoader {
   querySearch: string;
@@ -45,7 +47,7 @@ const MovieListLoader: FunctionComponent<PropsMovieListLoader> = ({
   }, [page, querySearch]);
 
   if (querySearch.trim() === '') {
-    return <div>Hola, bienvenido</div>;
+    return <WelcomeComponent />;
   }
 
   const handleChangePage = (pageIn: number) => setPage(pageIn);
@@ -55,9 +57,9 @@ const MovieListLoader: FunctionComponent<PropsMovieListLoader> = ({
       {service.error ? (
         <div>Error</div>
       ) : service.loading ? (
-        <div>Cargando</div>
+        <LoadingComponent />
       ) : (
-        <MovieListPaginator
+        <MovielistPaginator
           paginationData={service.data}
           onChangePage={handleChangePage}
         />

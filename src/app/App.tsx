@@ -10,7 +10,7 @@ const App = () => {
   return (
     <Fragment>
       <CssBaseline />
-      <BrowserRouter basename={AppRoutes.Home}>
+      <BrowserRouter basename={process.env.REACT_APP_BASE_URL}>
         <AppRouter />
       </BrowserRouter>
     </Fragment>

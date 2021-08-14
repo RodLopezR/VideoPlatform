@@ -3,8 +3,8 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "start": "react-scripts start",
-    "build": "BUILD_PATH='./docs' react-scripts build",
+    "start": "REACT_APP_BASE_URL='/' react-scripts start",
+    "build": "BUILD_PATH='./docs' REACT_APP_BASE_URL='https://rodlopezr.github.io/VideoPlatform/' react-scripts build",
     "test": "react-scripts test --ci --coverage --watchAll=false",
     "prettier": "./node_modules/.bin/prettier --write ."
   },

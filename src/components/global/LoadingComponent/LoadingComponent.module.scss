@@ -1,0 +1,12 @@
+.loading {
+  text-align: center;
+  color: white;
+  padding-top: 50px;
+  min-height: calc(100vh - 250px - 100px);
+
+  .circularProgress {
+    width: 70px !important;
+    height: 70px !important;
+    margin-bottom: 20px;
+  }
+}
