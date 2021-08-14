@@ -3,6 +3,7 @@ import TextField from '@material-ui/core/TextField';
 import SearchIcon from '@material-ui/icons/Search';
 import Button from '@material-ui/core/Button';
 import Styles from './SearchForm.module.scss';
+import { useIsMobile } from '../../../hooks/useIsMobile';
 
 interface PropsSearchForm {
   onChange: (value: string) => void;
@@ -13,8 +14,9 @@ const SearchForm: FunctionComponent<PropsSearchForm> = ({
   onChange,
   lastValue,
 }) => {
+  const isMobile = useIsMobile();
   const [value, setValue] = useState('');
-  console.log(value);
+
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     setValue(e.target.value);
   };
@@ -37,7 +39,7 @@ const SearchForm: FunctionComponent<PropsSearchForm> = ({
         onChange={handleChange}
       />
       <Button id="btnSearch" variant="contained" color="primary" type="submit">
-        <SearchIcon /> Buscar
+        <SearchIcon /> {isMobile ? '' : 'Buscar'}
       </Button>
     </form>
   );
