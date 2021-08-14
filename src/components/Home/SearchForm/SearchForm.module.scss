@@ -1,0 +1,44 @@
+@import '../../../scss/index.scss';
+
+.form {
+  text-align: center;
+  padding: 5px 20px 20px 20px;
+  color: black;
+
+  @include small {
+    padding: 5px 10px 20px 10px;
+  }
+
+  button {
+    height: 55px;
+    width: 120px;
+    margin-left: 5px;
+    background-color: #f9d309;
+    color: black;
+    font-weight: bold;
+
+    @include small {
+      width: 60px;
+    }
+  }
+
+  input {
+    background-color: white;
+    border-radius: 5px;
+  }
+
+  .formAnimation-enter {
+    opacity: 0;
+  }
+  .formAnimation-enter-active {
+    opacity: 1;
+    transition: opacity 200ms;
+  }
+  .formAnimation-exit {
+    opacity: 1;
+  }
+  .formAnimation-exit-active {
+    opacity: 0;
+    transition: opacity 200ms;
+  }
+}

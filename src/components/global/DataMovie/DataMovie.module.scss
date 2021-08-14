@@ -1,0 +1,27 @@
+.info {
+  text-align: center;
+  margin-bottom: 5px;
+
+  .votes {
+    display: inline-block;
+    background: yellow;
+    padding: 3px 10px;
+    margin-left: 10px;
+    border-radius: 5px;
+    color: black;
+
+    svg {
+      font-size: 10px;
+      margin-right: 5px;
+    }
+  }
+
+  .lang {
+    display: inline-block;
+    background: green;
+    padding: 3px 10px;
+    margin-left: 10px;
+    border-radius: 5px;
+    color: white;
+  }
+}
