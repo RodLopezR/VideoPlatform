@@ -7,6 +7,8 @@
     "build": "BUILD_PATH='./docs' REACT_APP_BASE_URL='VideoPlatform/' react-scripts build",
     "test": "react-scripts test --ci --coverage --watchAll=false",
     "test:watch": "react-scripts test --coverage --watchAll",
+    "cy:open": "node_modules/.bin/cypress open",
+    "cy:run": "node_modules/.bin/cypress run",
     "prettier": "./node_modules/.bin/prettier --write ."
   },
   "dependencies": {

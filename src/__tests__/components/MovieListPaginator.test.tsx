@@ -34,11 +34,15 @@ describe('MovieListPaginator Test', () => {
         <MovieListPaginator {...props} />
       </BrowserRouter>
     );
+    
+    oMounted.find('.MuiPaginationItem-root').at(0).simulate("click");
 
     const mEvent = {
       target: { scrollWidth: 100, scrollLeft: 50, clientWidth: 50 },
     };
-    oMounted.find('.containerMovies').at(0).simulate('scroll', mEvent);
+    oMounted.update();
+    expect(oMounted).toMatchSnapshot();
+    oMounted.find('.container').at(0).simulate('scroll', mEvent);
 
     oMounted.update();
     expect(oMounted.text()).toMatch(
