@@ -8,6 +8,10 @@ export interface Genrer {
   id: string;
   name: string;
 }
+export interface Languajes {
+  english_name: string;
+  iso_639_1: string;
+}
 
 interface DetailMovieType {
   id?: string;
@@ -20,6 +24,10 @@ interface DetailMovieType {
   vote_average?: number;
   vote_count?: number;
   original_language?: string;
+  spoken_languages: Languajes[]; 
+  popularity?: number;
+  homepage?: string;
+  status?: string;
   genres: Genrer[];
   production_companies: ProductionCompany[];
 }

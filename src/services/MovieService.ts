@@ -1,6 +1,7 @@
 import axios from 'axios';
 import DetailMovieType, {
   Genrer,
+  Languajes,
   ProductionCompany,
 } from '../types/DetailMovie';
 import MovieType from '../types/MovieType';
@@ -90,6 +91,9 @@ const GetMovieByIdService = async (
     vote_average,
     vote_count,
     original_language,
+    popularity,
+    status,
+    homepage,
   } = oAxiosResponse.data;
 
   const lGenres: Genrer[] = (oAxiosResponse.data.genres || []).map(
@@ -103,6 +107,12 @@ const GetMovieByIdService = async (
   ).map((item: any): ProductionCompany => {
     const { id, name, logo_path } = item;
     return { id, name, logo_path };
+  });
+  const lLanguajes: Languajes[] = (
+    oAxiosResponse.data.spoken_languages || []
+  ).map((item: any): Languajes => {
+    const { english_name, iso_639_1 } = item;
+    return { english_name, iso_639_1 };
   });
 
   const oResponse: DetailMovieType = {
@@ -118,6 +128,10 @@ const GetMovieByIdService = async (
     original_language,
     genres: lGenres,
     production_companies: lCompanies,
+    spoken_languages: lLanguajes,
+    popularity,
+    status,
+    homepage,
   };
   return oResponse;
 };

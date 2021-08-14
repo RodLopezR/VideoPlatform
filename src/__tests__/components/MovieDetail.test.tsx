@@ -12,6 +12,7 @@ describe('MovieDetail Test', () => {
       poster_path: 'image.png',
       genres: [],
       production_companies: [],
+      spoken_languages: [],
     };
     const oMounted = mount(<MovieDetail movie={oMovie} />);
     expect(oMounted.text()).toMatch(oMovie.overview + '');
@@ -26,6 +27,7 @@ describe('MovieDetail Test', () => {
         { id: '1', name: '123', logo_path: '/' },
         { id: '2', name: '123' },
       ],
+      spoken_languages: [],
     };
     const oMounted = mount(
       <ResponsiveTest initialWidth="sm">

@@ -3,6 +3,7 @@ import Grid from '@material-ui/core/Grid';
 import Styles from './MovieDetail.module.scss';
 import DetailMovieType, {
   Genrer,
+  Languajes,
   ProductionCompany,
 } from '../../../types/DetailMovie';
 import DataMovie from '../../global/DataMovie';
@@ -33,6 +34,29 @@ const MovieDetail: FunctionComponent<PropsMovieDetail> = ({ movie }) => {
         <div className={Styles.desc}>
           {isMobile ? <div className={Styles.title2}>{movie.title}</div> : null}
           {movie.overview}
+        </div>
+        <div className={Styles.genres}>
+          <strong>Homepage:</strong>
+          <br />
+          <a href={movie.homepage} target="_blank" rel="noreferrer">
+            {movie.homepage}
+          </a>
+        </div>
+        <div className={Styles.genres}>
+          <strong>Popularidad:</strong>
+          <br />
+          {movie.popularity}
+        </div>
+        <div className={Styles.genres}>
+          <strong>Status:</strong>
+          <br />
+          {movie.status}
+        </div>
+        <div className={Styles.genres}>
+          <strong>Idiomas disponibles:</strong>
+          {movie.spoken_languages.map((languaje: Languajes, index: number) => (
+            <div key={index}>{languaje.english_name}</div>
+          ))}
         </div>
         <div className={Styles.genres}>
           <strong>Generos:</strong>
