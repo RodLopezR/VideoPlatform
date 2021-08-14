@@ -1,12 +1,14 @@
+@import '../../../scss/index.scss';
+
 .container {
   .infoResult {
     font-size: 17px;
-    color: white;
+    color: $white;
     margin: 5px 0px;
   }
 
   .containerMovies {
-    min-height: calc(100vh - 250px - 100px);
+    min-height: calc(#{$screen_heiht} - #{$header_height} - #{$footer_height});
   }
 
   .pagination {
@@ -25,7 +27,7 @@
     }
 
     .paginationContent {
-      background-color: #f9d309;
+      background-color: $secondary;
       border-top-left-radius: 10px;
       border-top-right-radius: 10px;
       padding: 10px 10px 0px 10px;

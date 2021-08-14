@@ -1,7 +1,9 @@
+@import "../../../scss/index.scss";
+
 .container {
-  color: white;
+  color: $white;
   text-align: center;
   padding-top: 40px;
   font-size: 18px;
-  min-height: calc(100vh - 250px - 100px);
+  min-height: calc(#{$screen_heiht} - #{$header_height} - #{$footer_height});
 }

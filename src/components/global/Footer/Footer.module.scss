@@ -2,8 +2,8 @@
 
 .footer {
   width: 100%;
-  background-color: #fbd506;
-  height: 100px;
+  background-color: $secondary;
+  height: $footer_height;
   padding: 20px;
   background-repeat: no-repeat;
   background-position: left;
@@ -13,10 +13,10 @@
 
   &:before {
     content: '';
-    background: #fbd506;
+    background: $secondary;
     opacity: 0.85;
     width: 100%;
-    height: 100px;
+    height: $footer_height;
     top: 0px;
     left: 0px;
     position: absolute;

@@ -1,8 +1,10 @@
+@import "../../../scss/index.scss";
+
 .loading {
   text-align: center;
-  color: white;
+  color: $white;
   padding-top: 50px;
-  min-height: calc(100vh - 250px - 100px);
+  min-height: calc(#{$screen_heiht} - #{$header_height} - #{$footer_height});
 
   .circularProgress {
     width: 70px !important;

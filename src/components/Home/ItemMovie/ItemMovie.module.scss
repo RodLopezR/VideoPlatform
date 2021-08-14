@@ -1,8 +1,8 @@
-@import '../../../scss/index';
+@import '../../../scss/index.scss';
 
 .card {
   position: relative;
-  background-color: black !important;
+  background-color: $black !important;
   margin-right: 10px;
   margin-bottom: 20px;
   text-align: center;
@@ -20,7 +20,7 @@
     left: 0px;
     width: 100%;
     height: 600px;
-    background: linear-gradient(2350deg, transparent, black);
+    background: linear-gradient(2350deg, transparent, $black);
   }
 
   .shadowHover {
@@ -45,7 +45,7 @@
     bottom: 0px;
     left: 0px;
     padding: 10px;
-    color: white;
+    color: $white;
 
     .title {
       width: 80%;

@@ -1,14 +1,16 @@
+@import "../../../scss/index.scss";
+
 .info {
   text-align: center;
   margin-bottom: 5px;
 
   .votes {
     display: inline-block;
-    background: yellow;
+    background: $secondary;
     padding: 3px 10px;
     margin-left: 10px;
     border-radius: 5px;
-    color: black;
+    color: $black;
 
     svg {
       font-size: 10px;
@@ -18,10 +20,10 @@
 
   .lang {
     display: inline-block;
-    background: green;
+    background: $green;
     padding: 3px 10px;
     margin-left: 10px;
     border-radius: 5px;
-    color: white;
+    color: $white;
   }
 }

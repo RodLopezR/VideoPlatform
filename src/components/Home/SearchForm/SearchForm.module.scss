@@ -13,8 +13,8 @@
     height: 55px;
     width: 120px;
     margin-left: 5px;
-    background-color: #f9d309;
-    color: black;
+    background-color: $secondary;
+    color: $black;
     font-weight: bold;
 
     @include small {
@@ -23,22 +23,8 @@
   }
 
   input {
-    background-color: white;
+    background-color: $white;
     border-radius: 5px;
   }
 
-  .formAnimation-enter {
-    opacity: 0;
-  }
-  .formAnimation-enter-active {
-    opacity: 1;
-    transition: opacity 200ms;
-  }
-  .formAnimation-exit {
-    opacity: 1;
-  }
-  .formAnimation-exit-active {
-    opacity: 0;
-    transition: opacity 200ms;
-  }
 }
