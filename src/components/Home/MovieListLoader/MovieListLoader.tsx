@@ -1,9 +1,9 @@
 import { FunctionComponent, useEffect, useState } from 'react';
+import { Container } from '@material-ui/core';
 import { SearchMovieService } from '../../../services/MovieService';
-import { Container, Grid } from '@material-ui/core';
+
 import State from '../../../types/StateType';
-import ItemMovie from '../ItemMovie';
-import MovieType from '../../../types/MovieType';
+import MovieListPaginator from '../MovieListPaginator';
 
 interface PropsMovieListLoader {
   querySearch: string;
@@ -57,11 +57,10 @@ const MovieListLoader: FunctionComponent<PropsMovieListLoader> = ({
       ) : service.loading ? (
         <div>Cargando</div>
       ) : (
-        <Grid container>
-          {service.data.results.map((movie: MovieType, index: Number) => (
-            <ItemMovie key={movie.id} movie={movie} />
-          ))}
-        </Grid>
+        <MovieListPaginator
+          paginationData={service.data}
+          onChangePage={handleChangePage}
+        />
       )}
     </Container>
   );
