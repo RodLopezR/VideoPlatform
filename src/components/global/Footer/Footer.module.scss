@@ -1,0 +1,32 @@
+@import '../../../scss/index.scss';
+
+.footer {
+  width: 100%;
+  background-color: #fbd506;
+  height: 100px;
+  padding: 20px;
+  background-repeat: no-repeat;
+  background-position: left;
+  background-size: 100%;
+  object-fit: cover;
+  position: relative;
+
+  &:before {
+    content: '';
+    background: #fbd506;
+    opacity: 0.85;
+    width: 100%;
+    height: 100px;
+    top: 0px;
+    left: 0px;
+    position: absolute;
+  }
+
+  @include small {
+    padding: 5px !important;
+  }
+
+  .content {
+    position: relative;
+  }
+}
