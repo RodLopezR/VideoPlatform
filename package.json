@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "start": "REACT_APP_BASE_URL='/' react-scripts start",
-    "build": "BUILD_PATH='./docs' REACT_APP_BASE_URL='https://rodlopezr.github.io/VideoPlatform/' react-scripts build",
+    "build": "BUILD_PATH='./docs' REACT_APP_BASE_URL='VideoPlatform/' react-scripts build",
     "test": "react-scripts test --ci --coverage --watchAll=false",
     "prettier": "./node_modules/.bin/prettier --write ."
   },
