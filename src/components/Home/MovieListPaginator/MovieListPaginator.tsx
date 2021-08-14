@@ -51,7 +51,10 @@ const MovieListPaginator: FunctionComponent<Props> = ({
         ))}
       </Grid>
       {paginationData.total_pages > 1 ? (
-        <div id="pagination-zone" className={clsx(Styles.pagination, isFixed ? Styles.fixed : '')}>
+        <div
+          id="pagination-zone"
+          className={clsx(Styles.pagination, isFixed ? Styles.fixed : '')}
+        >
           <div className={Styles.paginationContent}>
             <Pagination
               count={paginationData.total_pages}

@@ -12,7 +12,7 @@ const Header = (props: PropsSearchForm) => {
   return (
     <div
       className={Styles.header}
-      style={{ backgroundImage: `url(${AppRoutes.Home}background.png)` }}
+      style={{ backgroundImage: `url(./background.png)` }}
     >
       <div className={Styles.shadow} />
       <div>

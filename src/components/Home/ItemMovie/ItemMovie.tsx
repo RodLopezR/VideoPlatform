@@ -21,7 +21,7 @@ const ItemMovie: FunctionComponent<ItemMovieProps> = ({ movie }) => {
             src={
               movie.poster_path
                 ? `https://image.tmdb.org/t/p/w500${movie.poster_path}`
-                : `/images.png`
+                : `./images.png`
             }
             alt={movie.title}
             className={Styles.img}
