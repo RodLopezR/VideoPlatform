@@ -21,7 +21,6 @@ describe('HeaderDetail tests', () => {
     oButton.simulate('click');
 
     expect(oButton).not.toBeNull();
-    expect(oMounted).toMatchSnapshot();
   });
   test('Normal render with data', () => {
     const oData: State = {
@@ -42,7 +41,6 @@ describe('HeaderDetail tests', () => {
     oButton.simulate('click');
 
     expect(oButton).not.toBeNull();
-    expect(oMounted).toMatchSnapshot();
     expect(oMounted.text()).toMatch(oData.data.title);
   });
 });

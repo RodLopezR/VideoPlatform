@@ -75,7 +75,8 @@ const GetMovieByIdService = async (
   if (
     oAxiosResponse.status !== 200 ||
     !oAxiosResponse ||
-    !oAxiosResponse.data
+    !oAxiosResponse.data ||
+    !oAxiosResponse.data.id
   ) {
     throw new Error('El formato de respuesta no es el esperado');
   }

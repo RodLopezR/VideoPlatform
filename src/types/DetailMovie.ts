@@ -24,7 +24,7 @@ interface DetailMovieType {
   vote_average?: number;
   vote_count?: number;
   original_language?: string;
-  spoken_languages: Languajes[]; 
+  spoken_languages: Languajes[];
   popularity?: number;
   homepage?: string;
   status?: string;

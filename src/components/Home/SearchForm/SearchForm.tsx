@@ -25,7 +25,6 @@ const SearchForm: FunctionComponent<PropsSearchForm> = ({
     e.preventDefault();
 
     if (value.trim() === '') return;
-    if (value === lastValue) return;
     onChange(value);
   };
 

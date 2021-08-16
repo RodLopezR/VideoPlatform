@@ -21,7 +21,8 @@ const useGetMovieById = (nIdMovie: number) => {
         if (!mounted) return;
         setService({ data: oMovieResponse, loading: false, error: false });
       } catch (e) {
-        setService({ data: null, loading: false, error: false });
+        if (!mounted) return;
+        setService({ data: null, loading: false, error: true });
       }
     })();
     return () => (mounted = false);

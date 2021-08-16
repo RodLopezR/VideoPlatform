@@ -1,4 +1,3 @@
-import nock from 'nock';
 import { mount } from 'enzyme';
 import MovieListPaginator from '../../components/Home/MovieListPaginator';
 import SearchServiceMock from '../../utils/mocks/SearchServiceMock';
@@ -34,17 +33,24 @@ describe('MovieListPaginator Test', () => {
         <MovieListPaginator {...props} />
       </BrowserRouter>
     );
-    
-    oMounted.find('.MuiPaginationItem-root').at(0).simulate("click");
 
+    oMounted.find('.MuiPaginationItem-root').at(0).simulate('click');
+
+    /*const mEvent = {
+      target: { scrollWidth: 100, scrollLeft: 50, clientWidth: 50 },
+    };
+    oMounted.update();
+    oMounted.find('.container').at(0).simulate('scroll', mEvent);
+
+    oMounted.update();
+    const customEvent = new Event('scroll');
+    oMounted.first().getDOMNode().dispatchEvent(customEvent);
+    oMounted.update();*/
     const mEvent = {
       target: { scrollWidth: 100, scrollLeft: 50, clientWidth: 50 },
     };
     oMounted.update();
-    expect(oMounted).toMatchSnapshot();
-    oMounted.find('.container').at(0).simulate('scroll', mEvent);
 
-    oMounted.update();
     expect(oMounted.text()).toMatch(
       `Se encontraron ${SearchServiceMock.total_results} resultados`
     );

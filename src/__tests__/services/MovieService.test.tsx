@@ -3,19 +3,22 @@ import {
   SearchMovieService,
   GetMovieByIdService,
 } from '../../services/MovieService';
-import GetMovieByIdMock from '../../utils/mocks/GetMovieByIdMock';
-import SearchServiceMock from '../../utils/mocks/SearchServiceMock';
+import {
+  MockGetMovieByIdBadResponse,
+  MockGetMovieByIdError,
+  MockGetMovieByIdOk,
+  MockGetSearchBadResponse,
+  MockGetSearchError,
+  MockGetSearchOk,
+} from '../../utils/NockService';
 
 describe('Services tests', () => {
+  afterAll(() => {
+    jest.restoreAllMocks();
+  });
   test('SearchMovieService', async () => {
     const query = 'Megaman';
-    nock('https://api.themoviedb.org/3/search')
-      .get(
-        `/movie?api_key=${
-          process.env.REACT_APP_API_KEY
-        }&query=${query}&page=${1}`
-      )
-      .reply(200, SearchServiceMock, { 'Access-Control-Allow-Origin': '*' });
+    MockGetSearchOk(query, 1);
 
     const oResponse = await SearchMovieService(query, 1);
     expect(oResponse).not.toBeNull();
@@ -27,13 +30,7 @@ describe('Services tests', () => {
   });
   test('SearchMovieService with server error', async () => {
     const query = 'Megaman';
-    nock('https://api.themoviedb.org/3/search')
-      .get(
-        `/movie?api_key=${
-          process.env.REACT_APP_API_KEY
-        }&query=${query}&page=${1}`
-      )
-      .reply(404, {}, { 'Access-Control-Allow-Origin': '*' });
+    MockGetSearchError(query, 1);
 
     try {
       await SearchMovieService(query, 1);
@@ -44,13 +41,7 @@ describe('Services tests', () => {
   });
   test('SearchMovieService with bad response format', async () => {
     const query = 'Megaman';
-    nock('https://api.themoviedb.org/3/search')
-      .get(
-        `/movie?api_key=${
-          process.env.REACT_APP_API_KEY
-        }&query=${query}&page=${1}`
-      )
-      .reply(200, { Hola: '123' }, { 'Access-Control-Allow-Origin': '*' });
+    MockGetSearchBadResponse(query, 1);
 
     try {
       await SearchMovieService(query, 1);
@@ -61,9 +52,7 @@ describe('Services tests', () => {
   });
   test('GetMovieByIdService test', async () => {
     const query = 1726;
-    nock('https://api.themoviedb.org/3/movie')
-      .get(`/${query}?api_key=${process.env.REACT_APP_API_KEY}`)
-      .reply(200, GetMovieByIdMock, { 'Access-Control-Allow-Origin': '*' });
+    MockGetMovieByIdOk(query);
 
     const oResponse = await GetMovieByIdService(query);
     expect(oResponse).not.toBeNull();
@@ -73,11 +62,9 @@ describe('Services tests', () => {
     expect(oResponse.release_date).not.toBeNull();
     expect(oResponse.title).not.toBeNull();
   });
-  test('SearchMovieService with server error', async () => {
+  test('GetMovieByIdService with server error', async () => {
     const query = 1726;
-    nock('https://api.themoviedb.org/3/movie')
-      .get(`/${query}?api_key=${process.env.REACT_APP_API_KEY}`)
-      .reply(404, {}, { 'Access-Control-Allow-Origin': '*' });
+    MockGetMovieByIdError(query);
 
     try {
       await GetMovieByIdService(query);
@@ -86,11 +73,9 @@ describe('Services tests', () => {
       expect(e.message).toMatch('404');
     }
   });
-  test('SearchMovieService with bad response format', async () => {
+  test('GetMovieByIdService with bad response format', async () => {
     const query = 1726;
-    nock('https://api.themoviedb.org/3/movie')
-      .get(`/${query}?api_key=${process.env.REACT_APP_API_KEY}`)
-      .reply(200, '', { 'Access-Control-Allow-Origin': '*' });
+    MockGetMovieByIdBadResponse(query);
 
     try {
       await GetMovieByIdService(query);

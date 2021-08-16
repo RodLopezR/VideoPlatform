@@ -20,8 +20,6 @@ describe('ItemMovie ests', () => {
       </BrowserRouter>
     );
 
-    expect(oMounted).toMatchSnapshot();
-
     const link = oMounted.find('a');
     link.simulate('click');
 

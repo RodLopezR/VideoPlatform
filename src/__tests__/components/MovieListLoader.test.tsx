@@ -2,10 +2,16 @@ import nock from 'nock';
 import { mount } from 'enzyme';
 import MovieListLoader from '../../components/Home/MovieListLoader';
 import { act } from 'react-dom/test-utils';
+import { MockGetSearchError, MockGetSearchOk } from '../../utils/NockService';
+import { render, waitForElementToBeRemoved } from '@testing-library/react';
+import { BrowserRouter } from 'react-router-dom';
 
 process.env.REACT_APP_API_KEY = '1234';
 
 describe('MovieListLoader Test', () => {
+  afterAll(() => {
+    jest.restoreAllMocks();
+  });
   test('Initial State', () => {
     const oQuerySearch: string = '';
     const oMounted = mount(<MovieListLoader querySearch={oQuerySearch} />);
@@ -13,19 +19,32 @@ describe('MovieListLoader Test', () => {
   });
   test('Normal render', async () => {
     const oQuerySearch: string = 'Iron man';
-    nock('https://api.themoviedb.org')
-      .get(
-        `/3/search/movie?api_key=${
-          process.env.REACT_APP_API_KEY
-        }&query=${oQuerySearch}&page=${1}`
-      )
-      .reply(200, {
-        access_token: 'fakeToken',
-      });
+    MockGetSearchOk(oQuerySearch, 1);
 
-    const oMounted = mount(<MovieListLoader querySearch={oQuerySearch} />);
+    await act(async () => {
+      const { getByText, getAllByText } = render(
+        <BrowserRouter>
+          <MovieListLoader querySearch={oQuerySearch} />
+        </BrowserRouter>
+      );
 
-    oMounted.update();
-    expect(oMounted.text()).toMatch('Cargando');
+      await waitForElementToBeRemoved(() => getByText('Cargando resultados'));
+      expect(getAllByText('Iron Man')).not.toBeNull();
+    });
+  });
+  test('Render with error', async () => {
+    const oQuerySearch: string = 'Iron man';
+    MockGetSearchError(oQuerySearch, 1);
+
+    await act(async () => {
+      const { getByText } = render(
+        <BrowserRouter>
+          <MovieListLoader querySearch={oQuerySearch} />
+        </BrowserRouter>
+      );
+
+      await waitForElementToBeRemoved(() => getByText('Cargando resultados'));
+      expect(getByText('Error')).not.toBeNull();
+    });
   });
 });

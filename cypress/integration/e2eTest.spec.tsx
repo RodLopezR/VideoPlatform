@@ -1,12 +1,10 @@
-describe('Buscar area de interes', () => {
+describe('e2e VideoPlatform', () => {
   it('Start navegation', () => {
     cy.visit('http://localhost:3000');
   });
   it('Insert data in input', () => {
     cy.wait(200);
-    cy.get('input[id=input-search]')
-      .clear()
-      .type('Iron man', { delay: 10 });
+    cy.get('input[id=input-search]').clear().type('Iron man', { delay: 10 });
   });
   it('Start search', () => {
     cy.wait(200);
@@ -20,7 +18,7 @@ describe('Buscar area de interes', () => {
   });
   it('Click into item', () => {
     cy.wait(1000);
-    cy.url().should('include', "1726");
+    cy.url().should('include', '1726');
   });
   it('Verify movie page', () => {
     cy.wait(1000);

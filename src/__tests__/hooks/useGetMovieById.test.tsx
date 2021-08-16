@@ -1,17 +1,23 @@
 import nock from 'nock';
 import React from 'react';
 import { renderHook } from '@testing-library/react-hooks/pure';
+//import axios from 'axios';
+//axios.defaults.adapter = require('axios/lib/adapters/http');
 
 import useGetMovieById from '../../hooks/useGetMovieById';
 import GetMovieByIdMock from '../../utils/mocks/GetMovieByIdMock';
+import { cleanup } from '@testing-library/react';
+import { MockGetMovieByIdOk } from '../../utils/NockService';
 
 describe('useGetMovieById tests', () => {
+  afterAll(() => {
+    cleanup();
+    jest.restoreAllMocks();
+  });
   test('Normal render', async () => {
     const query = 1726;
     const useEffect = jest.spyOn(React, 'useEffect');
-    nock('https://api.themoviedb.org/3/movie')
-      .get(`/${query}?api_key=${process.env.REACT_APP_API_KEY}`)
-      .reply(200, GetMovieByIdMock, { 'Access-Control-Allow-Origin': '*' });
+    MockGetMovieByIdOk(query);
 
     const { result, waitForNextUpdate } = renderHook(() =>
       useGetMovieById(query)
